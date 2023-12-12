@@ -1,0 +1,34 @@
+import axios from 'axios'
+import { ElMessage } from 'element-plus'
+import { UserInfoStore } from '../store'
+const request = axios.create({
+  baseURL: 'http://127.0.0.1:4523/m1/3726619-0-default',
+  timeout: 5000
+})
+import router from '@/router'
+// 请求拦截器
+request.interceptors.request.use((config: any) => {
+  const store = UserInfoStore()
+  const token = store.userInfo?.token
+  if (token) {
+    request.defaults.headers.common['Access-Token'] = token
+  }
+  return config
+})
+
+// 响应拦截器
+request.interceptors.response.use((response: any) => {
+  const store = UserInfoStore()
+  const data = response.data
+  if (data.status == 401) {
+    ElMessage({
+      message: '权限过期，重新登陆',
+      type: 'warning',
+    })
+    store.logOut()
+    return router.push('/logIn')
+  }
+  // 对响应数据做点什么
+  return data
+})
+export default request
