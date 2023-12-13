@@ -2,7 +2,7 @@ import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import { UserInfoStore } from '../store'
 const request = axios.create({
-  baseURL: 'http://127.0.0.1:4523/m1/3726619-0-default',
+  baseURL: '/m1/3726619-0-default',
   timeout: 5000
 })
 import router from '@/router'

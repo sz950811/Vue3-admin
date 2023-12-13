@@ -1,5 +1,4 @@
 import { createI18n } from 'vue-i18n'
-import storage from '../utils/storage'
 import cn from "./zhCn"
 import us from "./zhEn"
 import * as zhCn from 'element-plus/dist/locale/zh-cn.mjs'

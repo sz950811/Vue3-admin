@@ -27,7 +27,7 @@ const router = useRouter()
 const route = useRoute()
 const store = UserInfoStore()
 const onSubmit = () => {
-  store.onlogIn(loginForm.value)
+  store.onlogIn(loginForm.value, route.query.path)
   // const { data, status } = await logoIn(loginForm.value)
   // if (status == 0) {
   //   sessionStorage.setItem('DEMO_TOKEN', JSON.stringify(data.token))

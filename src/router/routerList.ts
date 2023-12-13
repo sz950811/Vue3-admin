@@ -1,7 +1,5 @@
-const TableVue = () => import('../views/table/Table.vue')
-// const Index3 = () => import('../views/index3/index.vue')
 import Index3 from './index3'
-import index2 from './index2'
+import echarts from './echarts'
 import table from './table'
 const routers = [
   {
@@ -14,13 +12,13 @@ const routers = [
     children: table,
   },
   {
-    path: '/index2',
-    name: 'index2',
+    path: '/echarts',
+    name: 'echarts',
     code: 'index2',
     meta: {
       id: '2'
     },
-    children: index2
+    children: echarts
   },
   {
     path: '/index3',
@@ -32,7 +30,5 @@ const routers = [
     },
     children: Index3
   },
-
 ]
-console.log({ routers })
 export default routers 

@@ -5,9 +5,15 @@
     </el-header>
     <el-container>
       <el-aside>
+        <!-- <el-card class="box-card"> -->
         <MenuLeft></MenuLeft>
+        <!-- </el-card> -->
       </el-aside>
-      <el-main> <RouterView></RouterView></el-main>
+      <el-main>
+        <el-card class="box-card">
+          <RouterView></RouterView>
+        </el-card>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -29,5 +35,14 @@ const mstore = menuLeftStore()
 }
 .el-aside {
   width: auto !important;
+  .el-card {
+    height: 100%;
+  }
+}
+.el-main {
+  box-sizing: border-box;
+  .el-card {
+    height: 100%;
+  }
 }
 </style>

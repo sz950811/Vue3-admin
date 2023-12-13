@@ -37,7 +37,6 @@ const store = menuLeftStore()
 const userInfoStore = UserInfoStore()
 const router = useRouter()
 const route = useRoute()
-console.log({ route })
 const handleOpen = (key: string, keyPath: string[]) => {
   // console.log(key, keyPath)
 }
@@ -54,7 +53,7 @@ type MenuListItem = {
 const menuList = ref([
   {
     id: '1',
-    name: 'Index',
+    name: 'Table',
     path: '/index',
     code: 'index',
     child: [
@@ -68,15 +67,15 @@ const menuList = ref([
   },
   {
     id: '2',
-    name: 'Index2',
-    path: '/index2',
+    name: 'ECharts',
+    path: '/echarts',
     code: 'index2',
     child: [
       {
         id: '2-1',
-        name: 'Table2',
+        name: 'ECharts',
         code: 'index2.table2',
-        path: '/index2/table2',
+        path: '/echarts/echarts',
       },
     ],
   },
@@ -104,7 +103,6 @@ const codeList = computed(() => {
 // 跳转
 const onJump = (item: any) => {
   router.push(item.path)
-  console.log(item)
 }
 // 激活菜单
 const activeMenu = computed(() => {
@@ -115,16 +113,29 @@ const activeMenu = computed(() => {
 <style lang="scss">
 .menu-box {
   height: 100%;
+  border-radius: 0 4px 4px 0;
+  overflow: hidden;
+  // background-color: skyblue;
+  border-right: 1px solid #dcdfe6;
   .el-menu {
     border-right: none;
+    // box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
+
+    overflow: hidden;
     &.el-menu-vertical-demo {
       height: calc(100% - 30px);
+      // border-radius: 0 4px 4px 0;
+      border-bottom: 1px solid #dcdfe6;
     }
   }
   .close-box {
     cursor: pointer;
     text-align: right;
     width: auto;
+    // border-top: 1px solid #cccc;
+    font-size: 12px;
+    line-height: 30px;
+    padding-right: 8px;
   }
 }
 .el-menu-vertical-demo:not(.el-menu--collapse) {
