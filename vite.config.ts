@@ -3,11 +3,11 @@ import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
-  const { VITE_APP_NAME, VITE_BASE_URL, VITE_NODE_ENV } = loadEnv(mode, process.cwd(), '')
+  const { VITE_APP_NAME, VITE_BASE_URL, VITE_NODE_ENV, APP_ENV } = loadEnv(mode, process.cwd(), '')
   return {
-    // define: {
-    //   __APP_ENV__: JSON.stringify(env.APP_ENV),
-    // },
+    define: {
+      __APP_ENV__: JSON.stringify(APP_ENV),
+    },
     base: './',
     plugins: [vue()],
     resolve: {

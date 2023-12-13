@@ -6,6 +6,9 @@
   "scripts": {
     "test": "vite --mode test",
     "dev": "vite --mode dev",
+    "build:mock": "vite build --mode mock",
+    "build:test": "vite build --mode test",
+    "build:prod": "vite build --mode prod",
     "build": "vue-tsc --noEmit --skipLibCheck && vite build",
     "preview": "vite preview"
   },

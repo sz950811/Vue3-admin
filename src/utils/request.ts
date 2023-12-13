@@ -8,10 +8,11 @@ const request = axios.create({
 import router from '@/router'
 // 请求拦截器
 request.interceptors.request.use((config: any) => {
-  const store = UserInfoStore()
-  const token = store.userInfo?.token
+  // const store = UserInfoStore()
+  const token = sessionStorage.getItem('DEMO_TOKEN')
   if (token) {
-    request.defaults.headers.common['Access-Token'] = token
+    config.headers['Access-Token'] = token
+    // request.defaults.headers.common['Access-Token'] = token
   }
   return config
 })
