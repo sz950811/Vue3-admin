@@ -1,0 +1,25 @@
+// @use './constant.scss';
+@use 'element-plus/theme-chalk/dark/css-vars.css';
+@use './cssvars.css';
+
+/* 改变主题色变量 */
+$pg-color-primary: #48e30a;
+$pg-color-primary-deputy: rgba($pg-color-primary, 0.2);
+
+@mixin pageTitle {
+  font-size: 21px;
+  font-weight: 700;
+  color: var(--color-text-highlight);
+}
+
+@mixin pageSubTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text-highlight);
+}
+
+@mixin pageLv3Title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text-highlight);
+}

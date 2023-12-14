@@ -1,4 +1,4 @@
-<template>index3</template>
+<template>ECharts</template>
 
 <script setup lang="ts">
 import { ref } from 'vue'

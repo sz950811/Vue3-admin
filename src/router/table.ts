@@ -7,7 +7,7 @@ const routerList = [
     name: 'index.table',
     code: 'index.table',
     meta: {
-      id: '1-1',
+      id: '2-1',
       name: 'Table'
     }
   }

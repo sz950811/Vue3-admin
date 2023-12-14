@@ -4,20 +4,27 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "test": "vite --mode test",
+    "dev": "vite --mode dev",
+    "build:mock": "vite build --mode mock",
+    "build:test": "vite build --mode test",
+    "build:prod": "vite build --mode prod",
+    "build": "vue-tsc --noEmit --skipLibCheck && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
     "axios": "^1.6.2",
+    "dayjs": "^1.11.10",
+    "echarts": "^5.4.3",
     "element-plus": "^2.4.3",
     "pinia": "^2.1.7",
     "vue": "^3.3.8",
-    "vue-i18n": "^9.8.0",
+    "vue-i18n": "9.3.0-beta.21",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
+    "@types/node": "^20.10.4",
     "@vitejs/plugin-vue": "^4.5.0",
     "sass": "^1.69.5",
     "typescript": "^5.2.2",

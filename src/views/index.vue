@@ -1,21 +1,40 @@
 <template>
-  <el-container class="box">
-    <el-header>
-      <Header></Header>
-    </el-header>
-    <el-container>
-      <el-aside>
-        <MenuLeft></MenuLeft>
-      </el-aside>
-      <el-main> <RouterView></RouterView></el-main>
+  <el-config-provider :locale="elLang">
+    <el-container class="box">
+      <el-header>
+        <Header></Header>
+      </el-header>
+      <el-container>
+        <el-aside>
+          <!-- <el-card class="box-card"> -->
+          <MenuLeft></MenuLeft>
+          <!-- </el-card> -->
+        </el-aside>
+        <el-main>
+          <el-card class="box-card">
+            <RouterView></RouterView>
+          </el-card>
+        </el-main>
+      </el-container>
     </el-container>
-  </el-container>
+  </el-config-provider>
 </template>
 
 <script setup lang="ts">
 import Header from '@/components/Header.vue'
 import MenuLeft from '@/components/MenuLeft.vue'
 import { menuLeftStore } from '../store/index'
+import { useI18n } from 'vue-i18n'
+import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
+import enUs from 'element-plus/dist/locale/en.mjs'
+import { ref, watch } from 'vue'
+const { locale } = useI18n()
+const elLang = ref(locale.value === 'zh-cn' ? zhCn : enUs)
+watch(locale, (v) => {
+  console.log({ v, locale })
+  elLang.value = v === 'zh-cn' ? zhCn : enUs
+  console.log(elLang.value, 111)
+})
 const mstore = menuLeftStore()
 </script>
 
@@ -29,5 +48,14 @@ const mstore = menuLeftStore()
 }
 .el-aside {
   width: auto !important;
+  .el-card {
+    height: 100%;
+  }
+}
+.el-main {
+  box-sizing: border-box;
+  .el-card {
+    height: 100%;
+  }
 }
 </style>

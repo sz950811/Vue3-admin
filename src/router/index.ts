@@ -6,6 +6,7 @@ const No404 = () => import('../components/404.vue')
 import No401 from '../components/401.vue'
 const wList = ['/logIn', '/404']
 import { UserInfoStore } from '../store'
+const { VITE_APP_NAME } = import.meta.env
 const routes: any = [
   { path: '/401', component: No401, name: '401' },
   {
@@ -63,7 +64,6 @@ router.beforeEach((to, from, next) => {
   }
 })
 router.afterEach((to) => {
-  console.log({ to })
-  document.title = 'Vue3-demo -' + to.meta.name
+  document.title = VITE_APP_NAME + '-' + to.meta.name
 })
 export default router

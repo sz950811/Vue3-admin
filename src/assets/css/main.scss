@@ -1,0 +1,179 @@
+@use './element/index.scss';
+// @use 'element-plus/theme-chalk/dark/css-vars.css';
+// @use '@/assets/iconfont/iconfont.css';
+// @use './cssvars.css';
+
+//滚动条的宽度
+// ::-webkit-scrollbar {
+//   width: 10px;
+//   height: 10px;
+// }
+
+//滚动条的滑块
+// ::-webkit-scrollbar-thumb {
+//   background-color: #666;
+//   border-radius: 5px;
+// }
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', SimSun, sans-serif;
+  font-weight: 400;
+}
+
+dl,
+dt,
+dd,
+ol,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.poc-mt24 {
+  margin-top: $MP24;
+}
+
+// 处理chrome的input默认背景色
+input:-webkit-autofill {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.page-common {
+  padding: 40px;
+}
+
+.filter-form {
+  .el-form-item {
+    display: inline-block;
+    margin-bottom: 0 !important;
+    margin-right: $MP16;
+  }
+
+  .el-form-item__label {
+    padding: 0;
+  }
+
+  .el-form-item__content {
+    width: 200px;
+
+    .el-input,
+    .el-select,
+    .el-date-editor {
+      width: 100%;
+    }
+  }
+}
+
+// 页面级标题
+.page-title {
+  @include pageTitle();
+}
+
+// 页面子模块标题
+.page-sub-title {
+  @include pageSubTitle();
+}
+
+// 三级页面子模块标题
+.page-lv3-title {
+  @include pageLv3Title();
+}
+
+// 统一body宽度
+.pg-body-width {
+  margin: 0 auto;
+}
+
+// 14寸 屏幕缩放比例150%
+@media screen and (min-width: 1280px) {
+
+  .pg-body-width,
+  .pgos-headerbg {
+    width: calc(100% - 60px);
+  }
+
+  .pgb-body {
+    min-height: 600px;
+  }
+
+  .is-fixed-header .el-affix--fixed {
+    width: 100% !important;
+    margin-left: -30px;
+
+    .pgh-affix-box {
+      padding: 0 30px;
+    }
+  }
+}
+
+// 苹果macbook pro 13.3寸 m2
+@media screen and (min-width: 1440px) {
+
+  .pg-body-width,
+  .pgos-headerbg {
+    width: calc(100% - 90px);
+  }
+
+  .pgb-body {
+    min-height: 600px;
+  }
+
+  .is-fixed-header .el-affix--fixed {
+    width: 100% !important;
+    margin-left: -45px;
+
+    .pgh-affix-box {
+      padding: 0 45px;
+    }
+  }
+}
+
+// 14寸 屏幕缩放比例125%
+@media screen and (min-width: 1536px) {
+
+  .pg-body-width,
+  .pgos-headerbg {
+    width: calc(100% - 120px);
+  }
+
+  .pgb-body {
+    min-height: 600px;
+  }
+
+  .is-fixed-header .el-affix--fixed {
+    width: 100% !important;
+    margin-left: -60px;
+
+    .pgh-affix-box {
+      padding: 0 60px;
+    }
+  }
+}
+
+// 24寸 1080p显示器
+@media screen and (min-width: 1920px) {
+
+  .pg-body-width,
+  .pgos-headerbg {
+    width: calc(100% - 240px);
+    max-width: 1682px;
+  }
+
+  .pgb-body {
+    min-height: 600px;
+  }
+
+  .is-fixed-header .el-affix--fixed {
+    width: 100% !important;
+    margin-left: -120px;
+
+    .pgh-affix-box {
+      padding: 0 120px;
+    }
+  }
+}
