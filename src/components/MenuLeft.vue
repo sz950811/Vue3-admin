@@ -24,15 +24,17 @@
         </el-menu-item>
       </template>
     </el-menu>
-    <div class="close-box" @click="store.openMenu">{{ store.isCollapse ? '打开' : '关闭' }}</div>
+    <div class="close-box" @click="store.openMenu">{{ store.isCollapse ? $t('cp:打开') : $t('cp:关闭') }}</div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { Document, Menu as IconMenu, Location, Setting } from '@element-plus/icons-vue'
 import { menuLeftStore, UserInfoStore } from '@/store'
-import { ref, computed } from 'vue'
+import { ref, computed, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import { useI18n } from 'vue-i18n'
+const { t, locale } = useI18n()
 const store = menuLeftStore()
 const userInfoStore = UserInfoStore()
 const router = useRouter()
@@ -50,44 +52,80 @@ type MenuListItem = {
   code: string
   child?: MenuListItem[]
 }
-const menuList = ref([
-  {
-    id: '1',
-    name: 'Table',
-    path: '/index',
-    code: 'index',
-    child: [
-      {
-        id: '1-1',
-        name: 'Table',
-        path: '/index/table',
-        code: 'index.table',
-      },
-    ],
-  },
-  {
-    id: '2',
-    name: 'ECharts',
-    path: '/echarts',
-    code: 'index2',
-    child: [
-      {
-        id: '2-1',
-        name: 'ECharts',
-        code: 'index2.table2',
-        path: '/echarts/echarts',
-      },
-    ],
-  },
-  {
-    id: '3',
-    name: 'Index3',
-    path: '/index3',
-    code: 'index3',
-  },
-])
+// const menuList = ref([
+//   {
+//     id: '1',
+//     name: t('cp:表格'),
+//     path: '/index',
+//     code: 'index',
+//     child: [
+//       {
+//         id: '1-1',
+//         name: 'Table',
+//         path: '/index/table',
+//         code: 'index.table',
+//       },
+//     ],
+//   },
+//   {
+//     id: '2',
+//     name: 'ECharts',
+//     path: '/echarts',
+//     code: 'index2',
+//     child: [
+//       {
+//         id: '2-1',
+//         name: 'ECharts',
+//         code: 'index2.table2',
+//         path: '/echarts/echarts',
+//       },
+//     ],
+//   },
+//   {
+//     id: '3',
+//     name: 'Index3',
+//     path: '/index3',
+//     code: 'index3',
+//   },
+// ])
 // 菜单权限
 const codeList = computed(() => {
+  let menuList = [
+    {
+      id: '1',
+      name: t('cp:表格'),
+      path: '/index',
+      code: 'index',
+      child: [
+        {
+          id: '1-1',
+          name: 'Table',
+          path: '/index/table',
+          code: 'index.table',
+        },
+      ],
+    },
+    {
+      id: '2',
+      name: 'ECharts',
+      path: '/echarts',
+      code: 'index2',
+      child: [
+        {
+          id: '2-1',
+          name: 'ECharts',
+          code: 'index2.table2',
+          path: '/echarts/echarts',
+        },
+      ],
+    },
+    {
+      id: '3',
+      name: 'Index3',
+      path: '/index3',
+      code: 'index3',
+    },
+  ]
   const filterMenus = (menus: any, accessList: string[]) => {
     let newMenus = menus.filter((item: any) => {
       return accessList.find((n) => n == item.code)
@@ -96,7 +134,7 @@ const codeList = computed(() => {
     return newMenus
   }
   if (userInfoStore.userInfo?.asscode && userInfoStore.userInfo.asscode.length) {
-    return filterMenus(menuList.value as MenuListItem[], userInfoStore.userInfo.asscode)
+    return filterMenus(menuList as MenuListItem[], userInfoStore.userInfo.asscode)
   }
   return []
 })
