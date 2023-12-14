@@ -1,11 +1,25 @@
 <template>
-  <div class="head-box">
-    <div class="logo-box">Logo</div>
-    <div class="user-info-box">
-      name:{{ store.userInfo?.name }} <ElButton @click="store.logOut">{{ $t('cp:登出') }}</ElButton>
-      <ElButton @click="changeLang(!langFlag)">切换</ElButton>
+  <el-card class="head-card">
+    <div class="head-box">
+      <div class="logo-box">Logo</div>
+      <div class="user-info-box">
+        <div class="user-info">
+          <el-dropdown trigger="click">
+            <i class="iconfont icon-user"></i>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item>{{ store.userInfo?.name }}</el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </div>
+        <ElButton style="text-align: center" @click="store.logOut" text circle>
+          <i class="iconfont icon-exit"></i>
+        </ElButton>
+        <ElButton text circle @click="changeLang(!langFlag)">{{ localeLang == 'zh-cn' ? 'En' : '中' }}</ElButton>
+      </div>
     </div>
-  </div>
+  </el-card>
 </template>
 
 <script setup lang="ts">
@@ -28,6 +42,14 @@ const changeLang = (flag: boolean) => {
 </script>
 
 <style lang="scss">
+.head-card {
+  .el-card__body {
+    padding: 0;
+  }
+  // .el-button {
+  //   cursor: pointer !important;
+  // }
+}
 .head-box {
   box-sizing: border-box;
   display: flex;
@@ -36,5 +58,24 @@ const changeLang = (flag: boolean) => {
   align-items: center;
   height: 60px;
   padding: 16px;
+  .user-info-box {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    .user-info {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .user-info:hover {
+      background-color: #fff;
+    }
+    .el-button {
+      margin-left: 0;
+    }
+  }
 }
 </style>

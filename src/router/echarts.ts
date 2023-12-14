@@ -7,7 +7,7 @@ const routerList = [
     name: 'echarts.echarts',
     code: 'index2.table2',
     meta: {
-      id: '2-1',
+      id: '3-1',
       name: 'Echarts'
     }
   }

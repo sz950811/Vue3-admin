@@ -11,16 +11,16 @@
       <template v-for="item in codeList">
         <el-sub-menu :index="item.id" v-if="item.child" :key="item.id">
           <template #title>
-            <el-icon><location /></el-icon>
-            <span>{{ item.name }}</span>
+            <i class="iconfont" :class="[item.icon]"></i>
+            <span class="title">{{ item.name }}</span>
           </template>
           <el-menu-item-group v-for="x in item.child" @click="onJump(x)">
             <el-menu-item :index="x.id">{{ x.name }}</el-menu-item>
           </el-menu-item-group>
         </el-sub-menu>
         <el-menu-item v-else :index="item.id" @click="onJump(item)">
-          <el-icon><location /></el-icon>
-          <span>{{ item.name }}</span>
+          <i class="iconfont" :class="[item.icon]"></i>
+          <span class="title">{{ item.name }}</span>
         </el-menu-item>
       </template>
     </el-menu>
@@ -29,7 +29,6 @@
 </template>
 
 <script setup lang="ts">
-import { Document, Menu as IconMenu, Location, Setting } from '@element-plus/icons-vue'
 import { menuLeftStore, UserInfoStore } from '@/store'
 import { ref, computed, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
@@ -39,12 +38,8 @@ const store = menuLeftStore()
 const userInfoStore = UserInfoStore()
 const router = useRouter()
 const route = useRoute()
-const handleOpen = (key: string, keyPath: string[]) => {
-  // console.log(key, keyPath)
-}
-const handleClose = (key: string, keyPath: string[]) => {
-  // console.log(key, keyPath)
-}
+const handleOpen = (key: string, keyPath: string[]) => {}
+const handleClose = (key: string, keyPath: string[]) => {}
 type MenuListItem = {
   id: string
   name: string
@@ -93,12 +88,20 @@ const codeList = computed(() => {
   let menuList = [
     {
       id: '1',
+      name: t('cp:仪表盘'),
+      path: '/dashboard/index',
+      code: 'dashboard',
+      icon: 'icon-piechart',
+    },
+    {
+      id: '2',
       name: t('cp:表格'),
       path: '/index',
       code: 'index',
+      icon: 'icon-database',
       child: [
         {
-          id: '1-1',
+          id: '2-1',
           name: 'Table',
           path: '/index/table',
           code: 'index.table',
@@ -106,24 +109,19 @@ const codeList = computed(() => {
       ],
     },
     {
-      id: '2',
-      name: 'ECharts',
+      id: '3',
+      name: t('cp:图表'),
       path: '/echarts',
       code: 'index2',
+      icon: 'icon-piechart',
       child: [
         {
-          id: '2-1',
+          id: '3-1',
           name: 'ECharts',
           code: 'index2.table2',
           path: '/echarts/echarts',
         },
       ],
-    },
-    {
-      id: '3',
-      name: 'Index3',
-      path: '/index3',
-      code: 'index3',
     },
   ]
   const filterMenus = (menus: any, accessList: string[]) => {
@@ -153,17 +151,19 @@ const activeMenu = computed(() => {
   height: 100%;
   border-radius: 0 4px 4px 0;
   overflow: hidden;
-  // background-color: skyblue;
   border-right: 1px solid #dcdfe6;
   .el-menu {
     border-right: none;
-    // box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.12);
-
     overflow: hidden;
     &.el-menu-vertical-demo {
       height: calc(100% - 30px);
-      // border-radius: 0 4px 4px 0;
       border-bottom: 1px solid #dcdfe6;
+      // .iconfont {
+      //   margin-right: 8px;
+      // }
+      .title {
+        margin-left: 8px;
+      }
     }
   }
   .close-box {

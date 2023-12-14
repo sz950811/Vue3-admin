@@ -10,6 +10,16 @@ export default defineConfig(({ command, mode }) => {
     },
     base: './',
     plugins: [vue()],
+    // css: {
+    //   preprocessorOptions: {
+    //     scss: {
+    //       additionalData: `
+    //       @use '@/assets/css/constant.scss' as *;
+    //       @use "@/assets/css/var.scss" as *;
+    //       `,
+    //     },
+    //   },
+    // },
     resolve: {
       alias: {
         '@': resolve('./src')
