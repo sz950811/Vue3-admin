@@ -2,7 +2,8 @@ import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import { UserInfoStore } from '../store'
 const request = axios.create({
-  baseURL: '/m1/3726619-0-default',
+  // baseURL: '/m1/3726619-0-default',
+  baseURL: '/api',
   timeout: 5000
 })
 import router from '@/router'

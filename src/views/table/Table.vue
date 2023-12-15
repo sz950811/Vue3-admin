@@ -1,5 +1,5 @@
 <template>
-  {{ '表格' }}
+  {{ tableData }}
 </template>
 
 <script setup lang="ts">
@@ -11,6 +11,9 @@ onMounted(() => {
 })
 const getTableData = async () => {
   const { data, status } = await getTable()
+  if (status == 0) {
+    tableData.value = data
+  }
 }
 </script>
 

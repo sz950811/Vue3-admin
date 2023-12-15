@@ -29,11 +29,11 @@ export default defineConfig(({ command, mode }) => {
       open: true,
       port: 3000,
       host: true,
-      proxy: {
-        '/m1/3726619-0-default': {
-          target: VITE_BASE_URL
-        }
-      }
+      // proxy: {
+      //   '/m1/3726619-0-default': {
+      //     target: VITE_BASE_URL
+      //   }
+      // }
     },
     build: {
       outDir: 'dist',
