@@ -10,7 +10,7 @@ onMounted(() => {
   getTableData()
 })
 const getTableData = async () => {
-  const { data, status } = await getTable()
+  const { data, status } = await getTable({ name: 'zs' })
   if (status == 0) {
     tableData.value = data
   }
