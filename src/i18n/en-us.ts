@@ -6,4 +6,5 @@ export default {
   'cp:关闭': 'close',
   'cp:仪表盘': 'Dashboard',
   'cp:图表': 'ECharts',
+  'cp:管理员': 'Admin'
 }

@@ -11,9 +11,10 @@ import App from './App.vue'
 import { i18n } from './i18n'
 import 'dayjs/locale/zh-cn'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+import VueGridLayout from 'vue-grid-layout'
 const app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component as any)
 }
-app.use(ElementPlus).use(i18n).use(pinia).use(router)
+app.use(ElementPlus).use(i18n).use(pinia).use(router).use(VueGridLayout)
 app.mount('#app')

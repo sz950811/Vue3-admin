@@ -3,7 +3,9 @@ const tableData = [{
   id: 1,
   name: 'zs'
 }]
-Mock.mock('/api/table', 'get', {
-  status: 0,
-  data: tableData
+Mock.mock('/api/table', 'post', (op: any) => {
+  return {
+    status: 200,
+    data: tableData
+  }
 })

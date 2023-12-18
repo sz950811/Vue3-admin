@@ -5,10 +5,10 @@ const routerList = [
     path: '/echarts/echarts',
     component: ECharts,
     name: 'echarts.echarts',
-    code: 'index2.table2',
     meta: {
       id: '3-1',
-      name: 'Echarts'
+      name: 'Echarts',
+      code: 'index2.table2',
     }
   }
 ]

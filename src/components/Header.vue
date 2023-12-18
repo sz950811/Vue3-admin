@@ -43,6 +43,7 @@ const changeLang = (flag: boolean) => {
 
 <style lang="scss">
 .head-card {
+  border: none !important;
   .el-card__body {
     padding: 0;
   }
@@ -58,6 +59,7 @@ const changeLang = (flag: boolean) => {
   align-items: center;
   height: 60px;
   padding: 16px;
+
   .user-info-box {
     cursor: pointer;
     display: flex;

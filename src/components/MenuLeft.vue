@@ -123,6 +123,21 @@ const codeList = computed(() => {
         },
       ],
     },
+    {
+      id: '4',
+      name: t('cp:管理员'),
+      path: '/admin',
+      code: 'admin',
+      icon: 'icon-piechart',
+      child: [
+        {
+          id: '4-1',
+          name: 'Admin',
+          code: 'admin.index',
+          path: '/admin/index',
+        },
+      ],
+    },
   ]
   const filterMenus = (menus: any, accessList: string[]) => {
     let newMenus = menus.filter((item: any) => {
