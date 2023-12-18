@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-box">
+  <div class="grid-box" v-loading="loading">
     <div class="btn-box">
       <ElButton @click="addEcharts">添加图表</ElButton>
       <ElButton @click="echartsOpt">图表配置项</ElButton>
@@ -7,6 +7,7 @@
     </div>
     <div class="grid-layout-box">
       <grid-layout
+        v-if="layout.length > 0"
         ref="gridLayout"
         v-model:layout="layout"
         :col-num="12"
@@ -36,34 +37,86 @@
       </grid-layout>
     </div>
   </div>
+  <el-dialog v-model="dialogVisible" title="添加图表" width="50%" class="add-echarts-box" :before-close="handleClose">
+    <el-form :model="addObj" label-width="120px">
+      <el-form-item label="X轴坐标">
+        <el-input v-model.number="addObj.x" />
+      </el-form-item>
+      <el-form-item label="Y轴坐标">
+        <el-input v-model.number="addObj.y" />
+      </el-form-item>
+      <el-form-item label="宽度">
+        <el-input v-model.number="addObj.w" />
+      </el-form-item>
+      <el-form-item label="高度">
+        <el-input v-model.number="addObj.h" />
+      </el-form-item>
+      <el-form-item label="图表配置项">
+        <json-editor-vue ref="jsonEditor" class="editor" v-model="addObj.echartsopt" />
+      </el-form-item>
+    </el-form>
+
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="dialogVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="submitEcharts"> Confirm </el-button>
+      </span>
+    </template>
+  </el-dialog>
 </template>
 
 <script setup lang="ts">
-import { getGridList } from '@/api/echarts'
+import { getGridList, addGridEcharts } from '@/api/echarts'
 import type { EchartsListItem } from '@/types/echartsList'
 import * as echarts from 'echarts'
-import { ref, onMounted, nextTick } from 'vue'
+import { ref, onMounted, nextTick, reactive } from 'vue'
 import { debounce } from '@/utils/deTh'
 import { downloadImg } from '@/utils/html2canvas'
+import JsonEditorVue from 'json-editor-vue3'
 const layout = ref<EchartsListItem[]>([])
+const dialogVisible = ref(false)
+const loading = ref(false)
+const addObj = ref<EchartsListItem>({
+  x: 3,
+  y: 3,
+  w: 6,
+  h: 6,
+  i: +new Date(),
+  echartsopt: null,
+})
 onMounted(() => {
   getgridList()
 })
 const getgridList = async () => {
+  loading.value = true
   const { status, data } = await getGridList()
   if (status == 200) {
-    layout.value = data.filter((item) => item.echartsopt !== null)
-    await nextTick()
-    initEcharts()
+    layout.value = data
+    // await nextTick()
+    setTimeout(() => {
+      initEcharts()
+    }, 200)
+    setTimeout(() => {
+      loading.value = false
+    }, 500)
   }
 }
 const resizedEvent = () => {}
+// 渲染ECharts 图表
 const initEcharts = () => {
   for (let index = 0; index < layout.value.length; index++) {
-    let chartDom = window.document.querySelector(`.echarts-box${layout.value[index].i}`) as HTMLElement
-    layout.value[index].echartsopt && echarts.init(chartDom).setOption(layout.value[index].echartsopt as any)
+    let dom
+    dom = echarts.getInstanceByDom(window.document.querySelector(`.echarts-box${layout.value[index].i}`) as HTMLElement)
+    if (!dom) {
+      echarts
+        .init(window.document.querySelector(`.echarts-box${layout.value[index].i}`) as HTMLElement)
+        .setOption(layout.value[index].echartsopt as any)
+    }
+    // let chartDom = window.document.querySelector(`.echarts-box${layout.value[index].i}`) as HTMLElement
+    // layout.value[index].echartsopt && echarts.init(chartDom).setOption(layout.value[index].echartsopt as any)
   }
 }
+// resize图表
 const resizeEvent = (i: any) => {
   debounce(() => {
     let dom: any
@@ -76,10 +129,38 @@ const resizeEvent = (i: any) => {
   })
 }
 // 添加图表
-const addEcharts = () => {}
+const addEcharts = () => {
+  dialogVisible.value = true
+}
 // 新图表配置项
 const echartsOpt = () => {
   window.open('https://tushuo.baidu.com/')
+}
+// 关闭弹窗
+const handleClose = () => {
+  dialogVisible.value = false
+  setTimeout(() => {
+    addObj.value = {
+      x: 3,
+      y: 3,
+      w: 6,
+      h: 6,
+      i: +new Date(),
+      echartsopt: null,
+    }
+  }, 200)
+}
+// 提交图表配置项
+const submitEcharts = async () => {
+  let btn = window.document.querySelector('.jsoneditor-repair') as HTMLElement
+  btn.click()
+  // addObj.value.i = +new Date()
+  const { status, data } = await addGridEcharts(addObj.value)
+  if (status == 200) {
+    await nextTick()
+    getgridList()
+    handleClose()
+  }
 }
 </script>
 
@@ -114,6 +195,14 @@ const echartsOpt = () => {
     .vue-grid-item.vue-grid-placeholder {
       background: skyblue !important;
     }
+  }
+}
+.add-echarts-box {
+  .container.editor {
+    width: 100%;
+  }
+  .jsoneditor-menu {
+    display: none;
   }
 }
 </style>
