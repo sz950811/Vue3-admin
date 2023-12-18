@@ -14,7 +14,7 @@ export const UserInfoStore = defineStore('UserInfoStore', () => {
   const onlogIn = async (parms: any, path?: any) => {
 
     const { data, status } = await logoIn(parms)
-    if (status == 0) {
+    if (status == 200) {
       userInfo.value = data
       token.value = data.token
       sessionStorage.setItem('DEMO_TOKEN', JSON.stringify(userInfo.value.token))

@@ -33,9 +33,7 @@ import { ref, watch } from 'vue'
 const { locale } = useI18n()
 const elLang = ref(locale.value === 'zh-cn' ? zhCn : enUs)
 watch(locale, (v) => {
-  console.log({ v, locale })
   elLang.value = v === 'zh-cn' ? zhCn : enUs
-  console.log(elLang.value, 111)
 })
 const mstore = menuLeftStore()
 </script>
@@ -61,6 +59,9 @@ const mstore = menuLeftStore()
   padding: 16px;
   .el-card {
     height: 100%;
+    .el-card__body {
+      padding: 0;
+    }
   }
   .el-scrollbar__thumb {
     background-color: #000 !important;

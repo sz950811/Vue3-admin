@@ -29,6 +29,12 @@ request.interceptors.response.use((response: any) => {
     })
     store.logOut()
     return router.push('/logIn')
+  } else if (data.status == 201) {
+    ElMessage({
+      message: '账号或密码错误',
+      type: 'warning',
+    })
+    return
   }
   // 对响应数据做点什么
   return data
