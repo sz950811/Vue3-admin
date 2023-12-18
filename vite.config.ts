@@ -40,6 +40,21 @@ export default defineConfig(({ command, mode }) => {
     },
     build: {
       outDir: 'dist',
+      chunkSizeWarningLimit: 1000, // 提高超大静态资源警告大小
+      rollupOptions: {
+        output: {
+          entryFileNames: "index.js",
+          assetFileNames: "assets/[ext]/[name]-[hash][extname]",
+          chunkFileNames: "js/[name]-[hash].js",
+        }
+      },
+      // 清楚全局打印 debug
+      terserOptions: {
+        compress: {
+          drop_console: true,
+          drop_debugger: true,
+        }
+      },
     }
   }
 

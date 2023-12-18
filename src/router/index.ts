@@ -43,7 +43,8 @@ const routes: any = [
   { path: '/404', component: No404, name: '404', meta: { name: '404' } },
 ]
 const router = createRouter({
-  history: createWebHistory(),
+  // history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 })
 router.beforeEach((to, from, next) => {
