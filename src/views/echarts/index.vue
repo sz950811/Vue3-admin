@@ -3,7 +3,7 @@
     <div class="btn-box">
       <ElButton @click="addEcharts">添加图表</ElButton>
       <ElButton @click="echartsOpt">图表配置项</ElButton>
-      <ElButton @click="createEcharts">生成报表</ElButton>
+      <ElButton @click="downloadImg('.grid-layout-box', 'img')">生成本地报表</ElButton>
     </div>
     <div class="grid-layout-box">
       <grid-layout
@@ -44,6 +44,7 @@ import type { EchartsListItem } from '@/types/echartsList'
 import * as echarts from 'echarts'
 import { ref, onMounted, nextTick } from 'vue'
 import { debounce } from '@/utils/deTh'
+import { downloadImg } from '@/utils/html2canvas'
 const layout = ref<EchartsListItem[]>([])
 onMounted(() => {
   getgridList()
@@ -53,9 +54,7 @@ const getgridList = async () => {
   if (status == 200) {
     layout.value = data.filter((item) => item.echartsopt !== null)
     await nextTick()
-    // setTimeout(() => {
     initEcharts()
-    // }, 200)
   }
 }
 const resizedEvent = () => {}
@@ -65,7 +64,7 @@ const initEcharts = () => {
     layout.value[index].echartsopt && echarts.init(chartDom).setOption(layout.value[index].echartsopt as any)
   }
 }
-const resizeEvent = (i: any, newH: any, newW: any, newHPx: any, newWPx: any) => {
+const resizeEvent = (i: any) => {
   debounce(() => {
     let dom: any
     dom = echarts.getInstanceByDom(window.document.querySelector(`.echarts-box${i}`) as HTMLElement)
@@ -75,40 +74,46 @@ const resizeEvent = (i: any, newH: any, newW: any, newHPx: any, newWPx: any) => 
     }
     dom.resize()
   })
-
-  // console.log(index)
 }
 // 添加图表
 const addEcharts = () => {}
 // 新图表配置项
-const echartsOpt = () => {}
-// 生成报表图片
-const createEcharts = () => {}
+const echartsOpt = () => {
+  window.open('https://tushuo.baidu.com/')
+}
 </script>
 
 <style lang="scss">
 .grid-box {
   box-sizing: border-box;
-  background-color: #ccc;
+  padding-bottom: 16px;
+  height: 100%;
   .btn-box {
     padding: 16px 16px;
     display: flex;
     justify-content: flex-end;
   }
-  .vue-grid-item {
-    box-sizing: border-box;
-    .echarts-box {
-      height: 100%;
-      border: 1px solid #000;
+  .grid-layout-box {
+    height: auto;
+    width: auto;
+    background-color: rgba(179, 174, 172, 0.2);
+    .vue-grid-item {
+      box-sizing: border-box;
+      background-color: #fff;
+      border-radius: 4px;
+      .echarts-box {
+        height: 100%;
+        // border: 1px solid #000;
+      }
+      .no-data {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
-    .no-data {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .vue-grid-item.vue-grid-placeholder {
+      background: skyblue !important;
     }
-  }
-  .vue-grid-item.vue-grid-placeholder {
-    background: skyblue !important;
   }
 }
 </style>
