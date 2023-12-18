@@ -58,13 +58,12 @@ const mstore = menuLeftStore()
   height: calc(100vh - 60px);
   padding: 16px;
   .el-scrollbar__view {
-    height: 100%;
+    // height: 1;
   }
   .el-card {
-    height: 100%;
+    min-height: 100%;
     .el-card__body {
       padding: 0;
-      height: 100%;
     }
   }
   .el-scrollbar__thumb {
