@@ -4,7 +4,9 @@
       <ElFormItem label="用户名:">
         <ElInput v-model:model-value="loginForm.name"></ElInput>
       </ElFormItem>
-      <ElFormItem label="密码:"> <ElInput v-model="loginForm.pwd"></ElInput> </ElFormItem>
+      <ElFormItem label="密码:">
+        <ElInput v-model="loginForm.pwd" type="password" placeholder="Please input password" show-password></ElInput>
+      </ElFormItem>
       <el-form-item class="btn-box">
         <ElButton type="primary" @click="onSubmit">{{ $t('cp:登陆') }}</ElButton>
         <ElButton link @click="onRegister">注册账号</ElButton>
@@ -20,8 +22,8 @@ import type { LogoInForm } from '../types/logoin.d.ts'
 import { useRouter, useRoute } from 'vue-router'
 import { UserInfoStore } from '../store/index'
 const loginForm = ref<LogoInForm>({
-  name: '',
-  pwd: '',
+  name: 'admin',
+  pwd: 'admin',
 })
 const router = useRouter()
 const route = useRoute()

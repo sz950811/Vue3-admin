@@ -5,10 +5,10 @@ const routerList = [
     path: '/index/table',
     component: Table,
     name: 'index.table',
-    code: 'index.table',
     meta: {
       id: '2-1',
-      name: 'Table'
+      name: 'Table',
+      code: 'index.table',
     }
   }
 ]

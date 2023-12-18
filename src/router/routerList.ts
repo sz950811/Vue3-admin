@@ -1,12 +1,13 @@
 import dashboard from './dashboard'
 import echarts from './echarts'
 import table from './table'
+import admin from './admin'
 const routers = [
   {
     path: '/dashboard',
     name: 'dashboard',
-    code: 'dashboard',
     meta: {
+      code: 'dashboard',
       id: '1',
       name: 'Dashboard'
     },
@@ -15,20 +16,32 @@ const routers = [
   {
     path: '/index',
     name: 'index',
-    code: 'index',
     meta: {
-      id: '2'
+      code: 'index',
+      id: '2',
+      name: 'Table'
     },
     children: table,
   },
   {
     path: '/echarts',
     name: 'echarts',
-    code: 'index2',
     meta: {
-      id: '3'
+      code: 'index2',
+      id: '3',
+      name: 'ECharts'
     },
     children: echarts
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    meta: {
+      code: 'admin',
+      id: '4',
+      name: "Admin"
+    },
+    children: admin
   },
 
 ]
