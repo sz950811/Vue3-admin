@@ -57,8 +57,11 @@ const mstore = menuLeftStore()
   background-color: rgba(179, 174, 172, 0.2);
   height: calc(100vh - 60px);
   padding: 16px;
+  .el-scrollbar__view {
+    // height: 1;
+  }
   .el-card {
-    height: 100%;
+    min-height: 100%;
     .el-card__body {
       padding: 0;
     }

@@ -35,6 +35,11 @@ request.interceptors.response.use((response: any) => {
       type: 'warning',
     })
     return
+  } else if (data.status == 500) {
+    ElMessage({
+      message: '服务器错误',
+      type: 'warning',
+    })
   }
   // 对响应数据做点什么
   return data

@@ -3,6 +3,6 @@ export type EchartsListItem = {
   y: number
   w: number
   h: number
-  i: number | string
+  i?: number | string
   echartsopt: {} | null
 } 

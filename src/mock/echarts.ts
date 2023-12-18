@@ -65,18 +65,20 @@ const echartsList: EchartsListItem[] = [
       ]
     }
   },
-  {
-    x: 5,
-    y: 0,
-    w: 4,
-    h: 7,
-    i: +new Date() + 2,
-    echartsopt: null
-  }
 ]
 Mock.mock('/api/gridList', 'get', (opt: any) => {
   return {
     status: 200,
     data: echartsList
+  }
+})
+Mock.mock('/api/addGrid', 'post', (opt: any) => {
+  const gridOpt = JSON.parse(opt.body)
+  echartsList.push(gridOpt)
+  return {
+    status: 200,
+    data: {
+      data: '成功'
+    }
   }
 })

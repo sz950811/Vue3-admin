@@ -1,9 +1,10 @@
 <template>
+  Echarts模块基本完成
   <div class="dashboard-box">
     <el-calendar v-model="value" />
-  </div>
-  <div class="dashboard-box">
+    <!-- <div class="dashboard-box"> -->
     <el-calendar v-model="value" />
+    <!-- </div> -->
   </div>
 </template>
 
@@ -14,6 +15,6 @@ const value = ref(new Date())
 
 <style lang="scss">
 .dashboard-box {
-  height: 1000px;
+  // height: 1000px;
 }
 </style>
