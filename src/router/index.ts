@@ -43,7 +43,8 @@ const routes: any = [
   { path: '/404', component: No404, name: '404', meta: { name: '404' } },
 ]
 const router = createRouter({
-  history: createWebHistory(),
+  // history: createWebHistory(),
+  history: createWebHashHistory(),
   routes
 })
 router.beforeEach((to, from, next) => {
@@ -52,8 +53,8 @@ router.beforeEach((to, from, next) => {
     const token = store.userInfo?.token
     const codeList = store.userInfo?.asscode as []
     if (token) {
-      // 根据路由中meta信息判断是否有权限访问，白名单则放行
-      if (codeList.some(item => item == to.meta.code) || wList.some(item => item == to.path)) {
+      // 根据路由中meta信息判断是否有权限访问，白名单，超级管理员则放行,
+      if (codeList.some(item => item == to.meta.code) || wList.some(item => item == to.path) || store.userInfo?.asscode.some(item => item == `${VITE_APP_NAME}.*`)) {
         next()
       } else {
         router.push(`/401`)

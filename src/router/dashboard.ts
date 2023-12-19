@@ -1,4 +1,5 @@
 const Dashboard = () => import('../views/dashboard/index.vue')
+const { VITE_APP_NAME } = import.meta.env
 const routerList = [
   {
     path: '/dashboard/index',
@@ -7,7 +8,7 @@ const routerList = [
     meta: {
       id: '1',
       name: 'Dashboard',
-      code: 'dashboard.index',
+      code: `${VITE_APP_NAME}.dashboard.index`,
     }
   }
 ]
