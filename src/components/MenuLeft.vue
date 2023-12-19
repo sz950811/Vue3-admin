@@ -29,6 +29,7 @@
 </template>
 
 <script setup lang="ts">
+const { VITE_APP_NAME } = import.meta.env
 import { menuLeftStore, UserInfoStore } from '@/store'
 import { ref, computed, reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
@@ -90,21 +91,21 @@ const codeList = computed(() => {
       id: '1',
       name: t('cp:仪表盘'),
       path: '/dashboard/index',
-      code: 'dashboard',
+      code: `${VITE_APP_NAME}.dashboard`,
       icon: 'icon-piechart',
     },
     {
       id: '2',
       name: t('cp:表格'),
       path: '/index',
-      code: 'index',
+      code: `${VITE_APP_NAME}.index`,
       icon: 'icon-database',
       child: [
         {
           id: '2-1',
           name: 'Table',
           path: '/index/table',
-          code: 'index.table',
+          code: `${VITE_APP_NAME}.index.table`,
         },
       ],
     },
@@ -112,13 +113,13 @@ const codeList = computed(() => {
       id: '3',
       name: t('cp:图表'),
       path: '/echarts',
-      code: 'index2',
+      code: `${VITE_APP_NAME}.index2`,
       icon: 'icon-piechart',
       child: [
         {
           id: '3-1',
           name: 'ECharts',
-          code: 'index2.table2',
+          code: `${VITE_APP_NAME}.index2.table2`,
           path: '/echarts/echarts',
         },
       ],
@@ -127,18 +128,22 @@ const codeList = computed(() => {
       id: '4',
       name: t('cp:管理员'),
       path: '/admin',
-      code: 'admin',
+      code: `${VITE_APP_NAME}.admin`,
       icon: 'icon-piechart',
       child: [
         {
           id: '4-1',
           name: 'Admin',
-          code: 'admin.index',
+          code: `${VITE_APP_NAME}.admin.index`,
           path: '/admin/index',
         },
       ],
     },
   ]
+  let adminFlag = userInfoStore.userInfo?.asscode.some((item) => item == `${VITE_APP_NAME}.*`)
+  if (adminFlag) {
+    return menuList
+  }
   const filterMenus = (menus: any, accessList: string[]) => {
     let newMenus = menus.filter((item: any) => {
       return accessList.find((n) => n == item.code)

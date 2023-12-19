@@ -1,5 +1,5 @@
 const Table = () => import('../views/table/Table.vue')
-// const Index = () => import('../views/index.vue')
+const { VITE_APP_NAME } = import.meta.env
 const routerList = [
   {
     path: '/index/table',
@@ -8,7 +8,7 @@ const routerList = [
     meta: {
       id: '2-1',
       name: 'Table',
-      code: 'index.table',
+      code: `${VITE_APP_NAME}.index.table`,
     }
   }
 ]

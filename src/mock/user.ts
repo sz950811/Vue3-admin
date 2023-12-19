@@ -1,17 +1,18 @@
 import Mock from 'mockjs'
-
+// const { VITE_APP_NAME } = import.meta.env
 const userinfo = {
   name: 'admin',
-  asscode: ["dashboard",
-    "dashboard.index",
-    "index",
-    "index.table",
-    "index2",
-    "index2.table2",
-    "logo",
-    "index3",
-    "admin",
-    'admin.index'
+  asscode: [
+    "VUE DEMO.dashboard",
+    "VUE DEMO.dashboard.index",
+    "VUE DEMO.index",
+    "VUE DEMO.index.table",
+    "VUE DEMO.index2",
+    "VUE DEMO.index2.table2",
+    "VUE DEMO.logo",
+    "VUE DEMO.index3",
+    "VUE DEMO.admin",
+    'VUE DEMO.admin.index'
   ],
   token: 'Hwy7nSPHKVKtHAeMwIjcLnyrwr6VwFzl'
 }
@@ -27,14 +28,15 @@ Mock.mock('/api/login', 'post', (opt: any) => {
       status: 200,
       data: {
         name: 'test',
-        asscode: ["dashboard",
-          "dashboard.index",
-          "index",
-          "index.table",
-          "index2",
-          "index2.table2",
-          "logo",
-          "index3",
+        asscode: [
+          "VUE DEMO.dashboard",
+          "VUE DEMO.dashboard.index",
+          "VUE DEMO.index",
+          "VUE DEMO.index.table",
+          "VUE DEMO.index2",
+          "VUE DEMO.index2.table2",
+          "VUE DEMO.logo",
+          "VUE DEMO.index3",
         ],
         token: 'Hwy7nSPHKVKtHAeMwIjcLnyrwr6VwFzl'
       }

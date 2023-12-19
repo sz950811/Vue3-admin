@@ -2,12 +2,13 @@ import dashboard from './dashboard'
 import echarts from './echarts'
 import table from './table'
 import admin from './admin'
+const { VITE_APP_NAME } = import.meta.env
 const routers = [
   {
     path: '/dashboard',
     name: 'dashboard',
     meta: {
-      code: 'dashboard',
+      code: `${VITE_APP_NAME}.dashboard`,
       id: '1',
       name: 'Dashboard'
     },
@@ -17,7 +18,7 @@ const routers = [
     path: '/index',
     name: 'index',
     meta: {
-      code: 'index',
+      code: `${VITE_APP_NAME}.index`,
       id: '2',
       name: 'Table'
     },
@@ -27,7 +28,7 @@ const routers = [
     path: '/echarts',
     name: 'echarts',
     meta: {
-      code: 'index2',
+      code: `${VITE_APP_NAME}.echarts`,
       id: '3',
       name: 'ECharts'
     },
@@ -37,7 +38,7 @@ const routers = [
     path: '/admin',
     name: 'admin',
     meta: {
-      code: 'admin',
+      code: `${VITE_APP_NAME}.admin`,
       id: '4',
       name: "Admin"
     },

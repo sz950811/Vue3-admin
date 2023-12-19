@@ -1,4 +1,5 @@
 const ECharts = () => import('../views/echarts/index.vue')
+const { VITE_APP_NAME } = import.meta.env
 // const Index = () => import('../views/index.vue')
 const routerList = [
   {
@@ -8,7 +9,7 @@ const routerList = [
     meta: {
       id: '3-1',
       name: 'Echarts',
-      code: 'index2.table2',
+      code: `${VITE_APP_NAME}.index2.table2`,
     }
   }
 ]
