@@ -50,33 +50,33 @@ const changeLang = (flag: boolean) => {
   // .el-button {
   //   cursor: pointer !important;
   // }
-}
-.head-box {
-  box-sizing: border-box;
-  display: flex;
-  justify-content: space-between;
-  background-color: skyblue;
-  align-items: center;
-  height: 60px;
-  padding: 16px;
-
-  .user-info-box {
-    cursor: pointer;
+  .head-box {
+    box-sizing: border-box;
     display: flex;
+    justify-content: space-between;
+    background-color: skyblue;
     align-items: center;
-    .user-info {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
+    height: 60px;
+    padding: 16px;
+
+    .user-info-box {
+      cursor: pointer;
       display: flex;
       align-items: center;
-      justify-content: center;
-    }
-    .user-info:hover {
-      background-color: #fff;
-    }
-    .el-button {
-      margin-left: 0;
+      .user-info {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .user-info:hover {
+        background-color: #fff;
+      }
+      .el-button {
+        margin-left: 0;
+      }
     }
   }
 }

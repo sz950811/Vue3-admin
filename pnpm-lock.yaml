@@ -32,9 +32,6 @@ dependencies:
   jsoneditor:
     specifier: ^9.10.4
     version: 9.10.4
-  mockjs:
-    specifier: ^1.1.0
-    version: 1.1.0
   pinia:
     specifier: ^2.1.7
     version: 2.1.7(typescript@5.3.3)(vue@3.3.10)
@@ -58,6 +55,9 @@ devDependencies:
   '@vitejs/plugin-vue':
     specifier: ^4.5.0
     version: 4.5.1(vite@5.0.6)(vue@3.3.10)
+  mockjs:
+    specifier: ^1.1.0
+    version: 1.1.0
   sass:
     specifier: ^1.69.5
     version: 1.69.5
@@ -926,7 +926,7 @@ packages:
   /commander@11.1.0:
     resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
     engines: {node: '>=16'}
-    dev: false
+    dev: true
 
   /computeds@0.0.1:
     resolution: {integrity: sha512-7CEBgcMjVmitjYo5q8JTJVra6X5mQ20uTThdK+0kR7UEaDrAWEQcRiBtWJzga4eRpP6afNwwLsX2SET2JhVB1Q==}
@@ -1273,7 +1273,7 @@ packages:
     hasBin: true
     dependencies:
       commander: 11.1.0
-    dev: false
+    dev: true
 
   /ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}

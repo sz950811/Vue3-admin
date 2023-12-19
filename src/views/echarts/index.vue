@@ -167,7 +167,7 @@ const submitEcharts = async () => {
 <style lang="scss">
 .grid-box {
   box-sizing: border-box;
-  padding-bottom: 16px;
+  // padding-bottom: 16px;
   height: 100%;
   .btn-box {
     padding: 16px 16px;

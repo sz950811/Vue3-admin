@@ -1,9 +1,10 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import { UserInfoStore } from '../store'
+const { VITE_BASE_URL } = import.meta.env
 const request = axios.create({
   // baseURL: '/m1/3726619-0-default',
-  baseURL: '/api',
+  baseURL: VITE_BASE_URL,
   timeout: 5000
 })
 import router from '@/router'
@@ -31,7 +32,7 @@ request.interceptors.response.use((response: any) => {
     return router.push('/logIn')
   } else if (data.status == 201) {
     ElMessage({
-      message: '账号或密码错误',
+      message: data.message,
       type: 'warning',
     })
     return
