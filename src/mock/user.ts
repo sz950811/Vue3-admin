@@ -3,16 +3,17 @@ import Mock from 'mockjs'
 const userinfo = {
   name: 'admin',
   asscode: [
-    "VUE DEMO.dashboard",
-    "VUE DEMO.dashboard.index",
-    "VUE DEMO.index",
-    "VUE DEMO.index.table",
-    "VUE DEMO.index2",
-    "VUE DEMO.index2.table2",
-    "VUE DEMO.logo",
-    "VUE DEMO.index3",
-    "VUE DEMO.admin",
-    'VUE DEMO.admin.index'
+    "VUE DEMO.*"
+    // "VUE DEMO.dashboard",
+    // "VUE DEMO.dashboard.index",
+    // "VUE DEMO.index",
+    // "VUE DEMO.index.table",
+    // "VUE DEMO.index2",
+    // "VUE DEMO.index2.table2",
+    // "VUE DEMO.logo",
+    // "VUE DEMO.index3",
+    // "VUE DEMO.admin",
+    // 'VUE DEMO.admin.index'
   ],
   token: 'Hwy7nSPHKVKtHAeMwIjcLnyrwr6VwFzl'
 }

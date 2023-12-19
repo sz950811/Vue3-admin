@@ -12,6 +12,7 @@ const routes: any = [
     path: '/', component: IndexVue, name: 'Index', redirect: (to: any, next: any) => {
       const store = UserInfoStore()
       if (store.userInfo?.token) {
+        if (store.userInfo.asscode.some(item => item == `${VITE_APP_NAME}.*`)) return '/dashboard/index'
         const fistMeun = routerList.find(x => {
           if (x.children) {
             return x.children.find(y => {
