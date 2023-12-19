@@ -6,6 +6,7 @@
   "scripts": {
     "test": "vite --mode test",
     "dev": "vite --mode dev",
+    "prod": "vite --mode prod",
     "build:mock": "vite build --mode mock",
     "build:test": "vite build --mode test",
     "build:prod": "vite build --mode prod",
@@ -22,7 +23,6 @@
     "install": "^0.13.0",
     "json-editor-vue3": "^1.0.9",
     "jsoneditor": "^9.10.4",
-    "mockjs": "^1.1.0",
     "pinia": "^2.1.7",
     "vue": "^3.3.8",
     "vue-grid-layout": "3.0.0-beta1",
@@ -32,6 +32,7 @@
   "devDependencies": {
     "@types/node": "^20.10.4",
     "@vitejs/plugin-vue": "^4.5.0",
+    "mockjs": "^1.1.0",
     "sass": "^1.69.5",
     "typescript": "^5.2.2",
     "vite": "^5.0.0",

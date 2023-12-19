@@ -4,11 +4,11 @@ const routerList = [
   {
     path: '/index/table',
     component: Table,
-    name: 'index.table',
+    name: 'table.index',
     meta: {
       id: '2-1',
       name: 'Table',
-      code: `${VITE_APP_NAME}.index.table`,
+      code: `${VITE_APP_NAME}.table.index.view`,
     }
   }
 ]

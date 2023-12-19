@@ -9,7 +9,7 @@ const routerList = [
     meta: {
       id: '3-1',
       name: 'Echarts',
-      code: `${VITE_APP_NAME}.index2.table2`,
+      code: `${VITE_APP_NAME}.echarts.index.view`,
     }
   }
 ]

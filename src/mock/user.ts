@@ -1,51 +1,50 @@
 import Mock from 'mockjs'
-// const { VITE_APP_NAME } = import.meta.env
-const userinfo = {
-  name: 'admin',
-  asscode: [
-    "VUE DEMO.dashboard",
-    "VUE DEMO.dashboard.index",
-    "VUE DEMO.index",
-    "VUE DEMO.index.table",
-    "VUE DEMO.index2",
-    "VUE DEMO.index2.table2",
-    "VUE DEMO.logo",
-    "VUE DEMO.index3",
-    "VUE DEMO.admin",
-    'VUE DEMO.admin.index'
-  ],
-  token: 'Hwy7nSPHKVKtHAeMwIjcLnyrwr6VwFzl'
-}
+const userinfo = [
+  {
+    id: 1,
+    name: 'admin',
+    pwd: 'admin',
+    asscode: [
+      "Vue3-admin.*"
+    ],
+    token: 'Hwy7nSPHKVKtHAeMwIjcLnyrwr6VwFzl'
+  },
+  {
+    id: 2,
+    name: 'test',
+    pwd: '123456',
+    asscode: [
+      "Vue3-admin.dashboard.view",
+      "Vue3-admin.dashboard.index.view",
+      "Vue3-admin.table.view",
+      "Vue3-admin.table.index.view",
+      "Vue3-admin.echarts.view",
+      "Vue3-admin.echarts.index.view",
+    ],
+    token: 'Hwy7nSPHKVKtHAeMwIjcLnyrwr6VwFzl'
+  },
+]
 Mock.mock('/api/login', 'post', (opt: any) => {
   let userObj = JSON.parse(opt.body)
-  if (userObj.name == 'admin') {
-    return {
-      status: 200,
-      data: userinfo
-    }
-  } else if (userObj.name == 'test') {
-    return {
-      status: 200,
-      data: {
-        name: 'test',
-        asscode: [
-          "VUE DEMO.dashboard",
-          "VUE DEMO.dashboard.index",
-          "VUE DEMO.index",
-          "VUE DEMO.index.table",
-          "VUE DEMO.index2",
-          "VUE DEMO.index2.table2",
-          "VUE DEMO.logo",
-          "VUE DEMO.index3",
-        ],
-        token: 'Hwy7nSPHKVKtHAeMwIjcLnyrwr6VwFzl'
+  let user = userinfo.find(item => item.name === userObj.name)
+  if (user) {
+    let pwdFalg = user.pwd === userObj.pwd
+    if (pwdFalg) {
+      let res = userinfo.find(item => item.name === userObj.name)
+      return {
+        status: 200,
+        data: res
+      }
+    } else {
+      return {
+        status: 201,
+        message: '用户名或密码错误'
       }
     }
   } else {
     return {
       status: 201,
-      data: {}
+      message: "用户不存在"
     }
   }
-
 })

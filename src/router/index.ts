@@ -6,12 +6,13 @@ const No404 = () => import('../components/404.vue')
 import No401 from '../components/401.vue'
 const wList = ['/logIn', '/404', '/401']
 import { UserInfoStore } from '../store'
-const { VITE_APP_NAME } = import.meta.env
+const { VITE_APP_NAME, VITE_APP_TITLE } = import.meta.env
 const routes: any = [
   {
     path: '/', component: IndexVue, name: 'Index', redirect: (to: any, next: any) => {
       const store = UserInfoStore()
       if (store.userInfo?.token) {
+        if (store.userInfo.asscode.some(item => item == `${VITE_APP_NAME}.*`)) return '/dashboard/index'
         const fistMeun = routerList.find(x => {
           if (x.children) {
             return x.children.find(y => {
@@ -71,6 +72,6 @@ router.beforeEach((to, from, next) => {
   }
 })
 router.afterEach((to) => {
-  document.title = VITE_APP_NAME + '-' + to.meta.name
+  document.title = VITE_APP_TITLE + '-' + to.meta.name
 })
 export default router

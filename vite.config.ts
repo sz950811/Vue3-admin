@@ -45,6 +45,9 @@ export default defineConfig(({ command, mode }) => {
         // }
         '/api': {
           target: VITE_BASE_URL
+        },
+        '/3726619-0-default': {
+          target: VITE_BASE_URL
         }
       }
     },
