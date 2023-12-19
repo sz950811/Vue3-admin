@@ -8,7 +8,7 @@ const routerList = [
     meta: {
       id: '1',
       name: 'Dashboard',
-      code: `${VITE_APP_NAME}.dashboard.index`,
+      code: `${VITE_APP_NAME}.dashboard.index.view`,
     }
   }
 ]

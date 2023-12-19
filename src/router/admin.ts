@@ -7,7 +7,7 @@ const routerList = [{
   meta: {
     id: '4-1',
     name: 'Admin',
-    code: `${VITE_APP_NAME}.admin.index`,
+    code: `${VITE_APP_NAME}.admin.index.view`,
   }
 }]
 export default routerList

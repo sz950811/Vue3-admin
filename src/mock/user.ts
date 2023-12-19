@@ -1,12 +1,11 @@
 import Mock from 'mockjs'
-// const { VITE_APP_NAME } = import.meta.env
 const userinfo = [
   {
     id: 1,
     name: 'admin',
     pwd: 'admin',
     asscode: [
-      "VUE DEMO.*"
+      "Vue3-admin.*"
     ],
     token: 'Hwy7nSPHKVKtHAeMwIjcLnyrwr6VwFzl'
   },
@@ -15,14 +14,12 @@ const userinfo = [
     name: 'test',
     pwd: '123456',
     asscode: [
-      "VUE DEMO.dashboard",
-      "VUE DEMO.dashboard.index",
-      "VUE DEMO.index",
-      "VUE DEMO.index.table",
-      "VUE DEMO.index2",
-      "VUE DEMO.index2.table2",
-      "VUE DEMO.logo",
-      "VUE DEMO.index3",
+      "Vue3-admin.dashboard.view",
+      "Vue3-admin.dashboard.index.view",
+      "Vue3-admin.table.view",
+      "Vue3-admin.table.index.view",
+      "Vue3-admin.echarts.view",
+      "Vue3-admin.echarts.index.view",
     ],
     token: 'Hwy7nSPHKVKtHAeMwIjcLnyrwr6VwFzl'
   },

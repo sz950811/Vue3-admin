@@ -1,6 +1,6 @@
 <template>
   <div class="admin-box">
-    <div class="head-box">ADMIN</div>
+    <div class="head-box">权限设置</div>
   </div>
 </template>
 
@@ -10,6 +10,10 @@ import { ref } from 'vue'
 
 <style lang="scss">
 .admin-box {
-  // height: 3000px;
+  padding: 16px;
+  .head-box {
+    font-size: 21px;
+    font-weight: 800;
+  }
 }
 </style>
