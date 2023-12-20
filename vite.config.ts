@@ -2,6 +2,7 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import viteCompression from 'vite-plugin-compression'
+import { visualizer } from 'rollup-plugin-visualizer'
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
   const { VITE_APP_NAME, VITE_BASE_URL, VITE_NODE_ENV, APP_ENV } = loadEnv(mode, process.cwd(), '')
@@ -18,7 +19,8 @@ export default defineConfig(({ command, mode }) => {
         algorithm: 'gzip', // 压缩方式
         ext: 'gz', // 后缀名
         deleteOriginFile: false, // 压缩后是否删除压缩源文件
-      })
+      }),
+      visualizer() // 文件打包视图
     ],
     // css: {
     //   preprocessorOptions: {
@@ -52,6 +54,7 @@ export default defineConfig(({ command, mode }) => {
       }
     },
     build: {
+      minify: 'terser',
       outDir: 'dist',
       chunkSizeWarningLimit: 1000, // 提高超大静态资源警告大小
       rollupOptions: {

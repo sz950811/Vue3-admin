@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { getTable } from '../../api/index'
+import { getTable } from '@/api/index'
 import { onMounted, ref } from 'vue'
 const tableData = ref()
 onMounted(() => {

@@ -1,4 +1,5 @@
-const Admin = () => import('@/components/Adimn.vue')
+// const Admin = () => import('@/components/Adimn.vue')
+const Admin = () => import('@/views/admin/index.vue')
 const { VITE_APP_NAME } = import.meta.env
 const routerList = [{
   path: '/admin/index',

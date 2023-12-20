@@ -3,8 +3,8 @@ const userinfo = [
   {
     id: 1,
     name: 'admin',
-    pwd: 'admin',
-    asscode: [
+    pwd: '123456',
+    accessCode: [
       "Vue3-admin.*"
     ],
     token: 'Hwy7nSPHKVKtHAeMwIjcLnyrwr6VwFzl'
@@ -13,13 +13,23 @@ const userinfo = [
     id: 2,
     name: 'test',
     pwd: '123456',
-    asscode: [
+    accessCode: [
       "Vue3-admin.dashboard.view",
       "Vue3-admin.dashboard.index.view",
       "Vue3-admin.table.view",
       "Vue3-admin.table.index.view",
       "Vue3-admin.echarts.view",
       "Vue3-admin.echarts.index.view",
+    ],
+    token: 'Hwy7nSPHKVKtHAeMwIjcLnyrwr6VwFzl'
+  },
+  {
+    id: 3,
+    name: 'test1',
+    pwd: '123456',
+    accessCode: [
+      "Vue3-admin.admin.view",
+      "Vue3-admin.admin.index.view",
     ],
     token: 'Hwy7nSPHKVKtHAeMwIjcLnyrwr6VwFzl'
   },
