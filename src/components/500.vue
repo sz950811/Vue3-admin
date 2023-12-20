@@ -1,7 +1,7 @@
 <template>
   <div class="box-401">
     <div class="main-box">
-      <div class="text">404</div>
+      <div class="text">500</div>
       <ElButton @click="back">返回首页</ElButton>
     </div>
   </div>
@@ -11,7 +11,6 @@
 import { ElButton } from 'element-plus'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-// import { ref } from 'vue'
 const back = () => {
   router.push('/')
 }

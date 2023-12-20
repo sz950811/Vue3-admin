@@ -2,7 +2,10 @@
   <div class="login-box">
     <ElForm label-width="100px" :model="loginForm" :rules="rules" ref="ruleFormRef">
       <ElFormItem label="用户名:" prop="name">
-        <ElInput v-model="loginForm.name"></ElInput>
+        <!-- <ElInput v-model="loginForm.name"></ElInput> -->
+        <el-select v-model="loginForm.name" class="m-2" placeholder="Select">
+          <el-option v-for="item in userlist" :key="item.id" :label="item.label" :value="item.id" />
+        </el-select>
       </ElFormItem>
       <ElFormItem label="密码:" prop="pwd">
         <ElInput v-model="loginForm.pwd" type="password" placeholder="Please input password" show-password></ElInput>
@@ -25,7 +28,7 @@ import { UserInfoStore } from '../store/index'
 import type { FormInstance, FormRules } from 'element-plus'
 const loginForm = ref<LogoInForm>({
   name: 'admin',
-  pwd: 'admin',
+  pwd: '123456',
 })
 const ruleFormRef = ref<any>()
 const rules = reactive({
@@ -43,6 +46,20 @@ const onSubmit = async () => {
     store.onlogIn(loginForm.value, route.query.path)
   }
 }
+const userlist = ref([
+  {
+    id: 'admin',
+    label: '超级管理员',
+  },
+  {
+    id: 'test',
+    label: '菜单权限测试账号',
+  },
+  {
+    id: 'test1',
+    label: '按钮权限测试账号',
+  },
+])
 const test = () => {
   loginForm.value = {
     name: 'test',
@@ -61,6 +78,9 @@ const test = () => {
   .el-form {
     margin-top: 100px;
     width: 20%;
+    .el-select {
+      width: 100%;
+    }
     .btn-box {
       .el-form-item__content {
         width: 100%;

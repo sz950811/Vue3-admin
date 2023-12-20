@@ -41,6 +41,13 @@ request.interceptors.response.use((response: any) => {
       message: '服务器错误',
       type: 'warning',
     })
+    return router.push('/500')
+  } else if (data.status != 200) {
+    ElMessage({
+      message: data.message,
+      type: 'warning',
+    })
+    return router.push('/500')
   }
   // 对响应数据做点什么
   return data

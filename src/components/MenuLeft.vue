@@ -140,7 +140,7 @@ const codeList = computed(() => {
       ],
     },
   ]
-  let adminFlag = userInfoStore.userInfo?.asscode.some((item) => item == `${VITE_APP_NAME}.*`)
+  let adminFlag = userInfoStore.userInfo?.accessCode.some((item) => item == `${VITE_APP_NAME}.*`)
   if (adminFlag) {
     return menuList
   }
@@ -151,8 +151,8 @@ const codeList = computed(() => {
     newMenus.forEach((x: any) => x.child && ((x.child = filterMenus(x.child, accessList)) as void))
     return newMenus
   }
-  if (userInfoStore.userInfo?.asscode && userInfoStore.userInfo.asscode.length) {
-    return filterMenus(menuList as MenuListItem[], userInfoStore.userInfo.asscode)
+  if (userInfoStore.userInfo?.accessCode && userInfoStore.userInfo.accessCode.length) {
+    return filterMenus(menuList as MenuListItem[], userInfoStore.userInfo.accessCode)
   }
   return []
 })

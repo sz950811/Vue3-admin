@@ -5,5 +5,5 @@ export type Res<T> = {
 export type UserInfo = {
   name: string
   token: string
-  asscode: string[]
+  accessCode: string[]
 }

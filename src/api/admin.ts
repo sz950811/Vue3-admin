@@ -1,2 +1,4 @@
 import request from "@/utils/request"
-export const getUserList = () => request.get('/userList')
+import type { Res } from '@/types/userInfo'
+import type { UserList } from '@/types/admin'
+export const getUserList = (): Res<UserList> => request.get('/userList')
